@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IoT Light Scheduler</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/mqttws31.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Graphical Light Scheduler</h2>
+    <form onsubmit="submitSchedule(event)">
+      <div class="ontime">
+        <label for="onTime">On Time:</label> 
+        <input type="text" id="onTime" placeholder="HH:MM">
+      </div>
+      <div class="offtime">
+        <label for="offTime">Off Time:</label>
+        <input type="text" id="offTime" placeholder="HH:MM">
+      </div>
+      <button type="submit">Submit</button>
+      <p id="status"></p>
+    </form>
+  </div>
+
+  <script>
+    function submitSchedule(event) {
+      event.preventDefault(); // Prevent page reload
+
+      const onTime = document.getElementById("onTime").value;
+      const offTime = document.getElementById("offTime").value;
+
+      if (!onTime || !offTime) {
+        document.getElementById("status").innerText = "Please enter both times.";
+        return;
+      }
+
+      // Send MQTT messages (this is placeholder logic; replace with actual MQTT code)
+      console.log("Sending ON time:", onTime);
+      console.log("Sending OFF time:", offTime);
+      // Example: mqttClient.send(...)
+
+      document.getElementById("status").innerText = "⏱️ Schedule sent!";
+
+      // Clear input fields
+      document.getElementById("onTime").value = "";
+      document.getElementById("offTime").value = "";
+    }
+  </script>
+</body>
+</html>
