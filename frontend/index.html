@@ -12,40 +12,17 @@
     <form onsubmit="submitSchedule(event)">
       <div class="ontime">
         <label for="onTime">On Time:</label> 
-        <input type="text" id="onTime" placeholder="HH:MM">
+        <input type="time" id="onTime" required>
       </div>
       <div class="offtime">
         <label for="offTime">Off Time:</label>
-        <input type="text" id="offTime" placeholder="HH:MM">
+        <input type="time" id="offTime" required>
       </div>
       <button type="submit">Submit</button>
       <p id="status"></p>
     </form>
   </div>
 
-  <script>
-    function submitSchedule(event) {
-      event.preventDefault(); // Prevent page reload
-
-      const onTime = document.getElementById("onTime").value;
-      const offTime = document.getElementById("offTime").value;
-
-      if (!onTime || !offTime) {
-        document.getElementById("status").innerText = "Please enter both times.";
-        return;
-      }
-
-      // Send MQTT messages (this is placeholder logic; replace with actual MQTT code)
-      console.log("Sending ON time:", onTime);
-      console.log("Sending OFF time:", offTime);
-      // Example: mqttClient.send(...)
-
-      document.getElementById("status").innerText = "⏱️ Schedule sent!";
-
-      // Clear input fields
-      document.getElementById("onTime").value = "";
-      document.getElementById("offTime").value = "";
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
